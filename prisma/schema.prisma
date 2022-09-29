@@ -13,6 +13,7 @@ datasource db {
   id Int @id @default(autoincrement())
   telegram String @db.VarChar(20)
   name String @db.VarChar(30)
+  password String @db.VarChar(40)
   tickets Ticket[]
   sales Sale[]
   reserves Reserve[]
