@@ -3,6 +3,9 @@
 "dependencies": {
     
     
+"@prisma/client": "^4.4.0",
+    
+    
 "dotenv": "^16.0.2",
     
     

@@ -6,6 +6,41 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
+ model Seller{
+  sID Int @id @default(autoincrement())
+  telegram String @db.VarChar(20)
+  name String @db.VarChar(30)
+ }
+ model Client{client Client
+  cID Int @id @default(autoincrement())
+  telegram String @db.VarChar(20)
+  name String @db.VarChar(30)
+  tickets Ticket[]
+ }
+ model Ticket{
+  tID Int @id @default(autoincrement())
+  telegram String @db.VarChar(20)
+  name String @db.VarChar(30)
+  game String @db.VarChar(50)  
+  seller Seller?
+  client Client?
+ }
+ model Reserve{
+    seller Seller
+    client Client
+    ticket Ticket
+ }
+ model Sale{
+  ticket Ticket
+  seller Seller
+  client Client
+  date DateTime @default(now()) @db.Timestamp(6)
+ } 
+ model Has{
+  ticket Ticket
+  seller Seller
+  date DateTime @default(now()) @db.Timestamp(6)
+ }
