@@ -4,6 +4,10 @@ const prisma = new PrismaClient()
 
 
 async function main(){
+    const allTikets = await prisma.ticket.findMany({
+        where:{},
+        include: {has:true},
+    })
     
 }
 
@@ -12,14 +16,11 @@ main().then(async () => {
 }).catch(async (e) => {
     console.error(e)
     await prisma.$disconnect()
-    process.exit(1)
+      process.exit(1)
 })
 async function allTikets(req , res){
-    const posts = await prisma.post.findMany({
-        where:{},
-        include:{has:true},
-    })
-    return res.json(posts);
+    const tickets = await prisma.ticket.findMany();
+    return res.json(tickets);
 }
 
 module.exports={
