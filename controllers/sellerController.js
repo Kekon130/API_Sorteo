@@ -23,6 +23,7 @@ async function allTikets(req , res){
     return res.json(tickets);
 }
 
+
 module.exports={
     allTikets,
 }
