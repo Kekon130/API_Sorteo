@@ -4,11 +4,7 @@ const prisma = new PrismaClient()
 
 
 async function main(){
-    const allTikets = await prisma.ticket.findMany({
-        where:{},
-        include: {has:true},
-    })
-    
+ 
 }
 
 main().then(async () => {
