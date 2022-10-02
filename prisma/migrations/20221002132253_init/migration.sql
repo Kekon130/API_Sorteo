@@ -1,0 +1,90 @@
+-- CreateTable
+CREATE TABLE `Seller` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `telegram` VARCHAR(20) NOT NULL,
+    `name` VARCHAR(30) NOT NULL,
+    `password` VARCHAR(40) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Client` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `telegram` VARCHAR(20) NOT NULL,
+    `name` VARCHAR(30) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Ticket` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(30) NOT NULL,
+    `game` VARCHAR(50) NOT NULL,
+    `sellerID` INTEGER NOT NULL,
+    `clientID` INTEGER NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Reserve` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `sellerID` INTEGER NOT NULL,
+    `clientID` INTEGER NOT NULL,
+    `ticketID` INTEGER NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Sale` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `sellerID` INTEGER NOT NULL,
+    `clientID` INTEGER NOT NULL,
+    `ticketID` INTEGER NOT NULL,
+    `date` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Has` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `ticketID` INTEGER NOT NULL,
+    `sellerID` INTEGER NOT NULL,
+    `date` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `Ticket` ADD CONSTRAINT `Ticket_sellerID_fkey` FOREIGN KEY (`sellerID`) REFERENCES `Seller`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Ticket` ADD CONSTRAINT `Ticket_clientID_fkey` FOREIGN KEY (`clientID`) REFERENCES `Client`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Reserve` ADD CONSTRAINT `Reserve_sellerID_fkey` FOREIGN KEY (`sellerID`) REFERENCES `Seller`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Reserve` ADD CONSTRAINT `Reserve_clientID_fkey` FOREIGN KEY (`clientID`) REFERENCES `Client`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Reserve` ADD CONSTRAINT `Reserve_ticketID_fkey` FOREIGN KEY (`ticketID`) REFERENCES `Ticket`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Sale` ADD CONSTRAINT `Sale_sellerID_fkey` FOREIGN KEY (`sellerID`) REFERENCES `Seller`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Sale` ADD CONSTRAINT `Sale_clientID_fkey` FOREIGN KEY (`clientID`) REFERENCES `Client`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Sale` ADD CONSTRAINT `Sale_ticketID_fkey` FOREIGN KEY (`ticketID`) REFERENCES `Ticket`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Has` ADD CONSTRAINT `Has_ticketID_fkey` FOREIGN KEY (`ticketID`) REFERENCES `Ticket`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Has` ADD CONSTRAINT `Has_sellerID_fkey` FOREIGN KEY (`sellerID`) REFERENCES `Seller`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
