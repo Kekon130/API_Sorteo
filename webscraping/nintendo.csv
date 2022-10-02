@@ -1,0 +1,428 @@
+,name,game,C_ID,S_ID
+0,"Baby Bowser
+",Mario,NULL,NULL
+1,"Baby Luigi
+",Mario,NULL,NULL
+2,"Baby Mario
+",Mario,NULL,NULL
+3,"Birdo
+",Mario,NULL,NULL
+4,"Bowser
+",Mario,NULL,NULL
+5,"Bowser Jr.
+",Mario,NULL,NULL
+6,"Cappy
+",Mario,NULL,NULL
+7,"Princess Daisy
+",Mario,NULL,NULL
+8,"
+Petey Piranha
+",Mario,NULL,NULL
+9,"Geno
+",Mario,NULL,NULL
+10,"King Boo
+",Mario,NULL,NULL
+11,"Luigi
+",Mario,NULL,NULL
+12,"Mario
+",Mario,NULL,NULL
+13,"Nabbit
+",Mario,NULL,NULL
+14,"Pauline
+",Mario,NULL,NULL
+15,"Princess Peach
+",Mario,NULL,NULL
+16,"Professor E. Gadd
+",Mario,NULL,NULL
+17,"Rosalina
+",Mario,NULL,NULL
+18,"Toad
+",Mario,NULL,NULL
+19,"
+Toadette
+",Mario,NULL,NULL
+20,"
+Toadsworth
+",Mario,NULL,NULL
+21,"Waluigi
+",Mario,NULL,NULL
+22,"Wario
+",Mario,NULL,NULL
+23,"Yoshi
+",Mario,NULL,NULL
+24,"Link
+",The Legend of Zelda,NULL,NULL
+25,"Princess Zelda
+",The Legend of Zelda,NULL,NULL
+26,"Ganon (dorf)
+",The Legend of Zelda,NULL,NULL
+27,"Epona
+",The Legend of Zelda,NULL,NULL
+28,"Tingle
+",The Legend of Zelda,NULL,NULL
+29,"Impa
+",The Legend of Zelda,NULL,NULL
+30,"Kraid
+",Metroid,NULL,NULL
+31,"Mother Brain
+",Metroid,NULL,NULL
+32,"Ridley
+",Metroid,NULL,NULL
+33,"Samus Aran
+",Metroid,NULL,NULL
+34,"Adam Malkovich
+",Metroid,NULL,NULL
+35,"Metroid Prime/Dark Samus
+",Metroid,NULL,NULL
+36,"Diddy Kong
+",Donkey Kong,NULL,NULL
+37,"Donkey Kong
+",Donkey Kong,NULL,NULL
+38,"Dixie Kong
+",Donkey Kong,NULL,NULL
+39,"Cranky Kong
+",Donkey Kong,NULL,NULL
+40,"Funky Kong
+",Donkey Kong,NULL,NULL
+41,"Kiddy Kong
+",Donkey Kong,NULL,NULL
+42,"Tiny Kong
+",Donkey Kong,NULL,NULL
+43,"Lanky Kong
+",Donkey Kong,NULL,NULL
+44,"Chunky Kong
+",Donkey Kong,NULL,NULL
+45,"King K. Rool
+",Donkey Kong,NULL,NULL
+46,"Tiki Tong
+",Donkey Kong,NULL,NULL
+47,"Lord Fredrik
+",Donkey Kong,NULL,NULL
+48,"King Dedede
+",Kirby,NULL,NULL
+49,"Kirby
+",Kirby,NULL,NULL
+50,"Meta Knight
+",Kirby,NULL,NULL
+51,"Bandana Waddle Dee
+",Kirby,NULL,NULL
+52,"Captain Falcon
+",F-Zero,NULL,NULL
+53,"Samurai Goroh
+",F-Zero,NULL,NULL
+54,"Dr. Stewart
+",F-Zero,NULL,NULL
+55,"Pico
+",F-Zero,NULL,NULL
+56,"Marth
+",Fire Emblem,NULL,NULL
+57,"Alm
+",Fire Emblem,NULL,NULL
+58,"Celica
+",Fire Emblem,NULL,NULL
+59,"Sigurd
+",Fire Emblem,NULL,NULL
+60,"Seliph
+",Fire Emblem,NULL,NULL
+61,"Eldigan
+",Fire Emblem,NULL,NULL
+62,"Leif
+",Fire Emblem,NULL,NULL
+63,"Roy
+",Fire Emblem,NULL,NULL
+64,"Lilina
+",Fire Emblem,NULL,NULL
+65,"Lyn
+",Fire Emblem,NULL,NULL
+66,"Eliwood
+",Fire Emblem,NULL,NULL
+67,"Hector
+",Fire Emblem,NULL,NULL
+68,"Eirika
+",Fire Emblem,NULL,NULL
+69,"Ephraim
+",Fire Emblem,NULL,NULL
+70,"Ike
+",Fire Emblem,NULL,NULL
+71,"Micaiah
+",Fire Emblem,NULL,NULL
+72,"Chrom
+",Fire Emblem,NULL,NULL
+73,"Robin
+",Fire Emblem,NULL,NULL
+74,"Lucina
+",Fire Emblem,NULL,NULL
+75,"Corrin
+",Fire Emblem,NULL,NULL
+76,"Azura
+",Fire Emblem,NULL,NULL
+77,"Ryoma
+",Fire Emblem,NULL,NULL
+78,"Xander
+",Fire Emblem,NULL,NULL
+79,"Andross
+",Star Fox,NULL,NULL
+80,"Falco Lombardi
+",Star Fox,NULL,NULL
+81,"Fox McCloud
+",Star Fox,NULL,NULL
+82,"Slippy Toad
+",Star Fox,NULL,NULL
+83,"Peppy Hare
+",Star Fox,NULL,NULL
+84,"Krystal
+",Star Fox,NULL,NULL
+85,"General Pepper
+",Star Fox,NULL,NULL
+86,"Wolf O'Donnell
+",Star Fox,NULL,NULL
+87,"Pigma Dengar
+",Star Fox,NULL,NULL
+88,"Leon Powalski
+",Star Fox,NULL,NULL
+89,"Andrew Oikonny
+",Star Fox,NULL,NULL
+90,"Panther Caroso
+",Star Fox,NULL,NULL
+91,"Pokémon Trainer
+",Pokémon,NULL,NULL
+92,"Professor Oak
+",Pokémon,NULL,NULL
+93,"Professor Elm
+",Pokémon,NULL,NULL
+94,"Professor Birch
+",Pokémon,NULL,NULL
+95,"Professor Rowan
+",Pokémon,NULL,NULL
+96,"Professor Juniper
+",Pokémon,NULL,NULL
+97,"Professor Sycamore
+",Pokémon,NULL,NULL
+98,"Professor Kukui
+",Pokémon,NULL,NULL
+99,"Blue
+",Pokémon,NULL,NULL
+100,"Lance
+",Pokémon,NULL,NULL
+101,"Steven Stone
+",Pokémon,NULL,NULL
+102,"Cynthia
+",Pokémon,NULL,NULL
+103,"N
+",Pokémon,NULL,NULL
+104,"Iris
+",Pokémon,NULL,NULL
+105,"Diantha
+",Pokémon,NULL,NULL
+106,"Lucas
+",Mother,NULL,NULL
+107,"Ness
+",Mother,NULL,NULL
+108,"Ninten
+",Mother,NULL,NULL
+109,"Giygas
+",Mother,NULL,NULL
+110,"Porky Minch
+",Mother,NULL,NULL
+111,"Captain Olimar
+",Pikmin,NULL,NULL
+112,"Louie
+",Pikmin,NULL,NULL
+113,"President of Hocotate Freight
+",Pikmin,NULL,NULL
+114,"Alph
+",Pikmin,NULL,NULL
+115,"Brittany
+",Pikmin,NULL,NULL
+116,"Captain Charlie
+",Pikmin,NULL,NULL
+117,"Isabelle
+",Animal Crossing,NULL,NULL
+118,"K.K. Slider
+",Animal Crossing,NULL,NULL
+119,"Tom Nook
+",Animal Crossing,NULL,NULL
+120,"Tortimer
+",Animal Crossing,NULL,NULL
+121,"Sable and Mabel
+",Animal Crossing,NULL,NULL
+122,"Kapp'n
+",Animal Crossing,NULL,NULL
+123,"Mr. Resetti
+",Animal Crossing,NULL,NULL
+124,"Lottie
+",Animal Crossing,NULL,NULL
+125,"Andy
+",Advance Wars,NULL,NULL
+126,"Max
+",Advance Wars,NULL,NULL
+127,"Sami
+",Advance Wars,NULL,NULL
+128,"Isaac
+",Golden Sun,NULL,NULL
+129,"Garet
+",Golden Sun,NULL,NULL
+130,"Ivan
+",Golden Sun,NULL,NULL
+131,"Mia
+",Golden Sun,NULL,NULL
+132,"Felix
+",Golden Sun,NULL,NULL
+133,"Jenna
+",Golden Sun,NULL,NULL
+134,"Sheba
+",Golden Sun,NULL,NULL
+135,"Piers
+",Golden Sun,NULL,NULL
+136,"Matthew
+",Golden Sun,NULL,NULL
+137,"Pit
+",Kid Icarus,NULL,NULL
+138,"Palutena
+",Kid Icarus,NULL,NULL
+139,"Medusa
+",Kid Icarus,NULL,NULL
+140,"Hades
+",Kid Icarus,NULL,NULL
+141,"Dark Pit
+",Kid Icarus,NULL,NULL
+142,"Viridi
+",Kid Icarus,NULL,NULL
+143,"Little Mac
+",Punch-Out,NULL,NULL
+144,"Doc Louis
+",Punch-Out,NULL,NULL
+145,"Shulk
+",Xenoblade,NULL,NULL
+146,"Reyn
+",Xenoblade,NULL,NULL
+147,"Fiora
+",Xenoblade,NULL,NULL
+148,"Dunban
+",Xenoblade,NULL,NULL
+149,"Sharla
+",Xenoblade,NULL,NULL
+150,"Melia
+",Xenoblade,NULL,NULL
+151,"Riki
+",Xenoblade,NULL,NULL
+152,"Zanza/Klaus/The Architect
+",Xenoblade,NULL,NULL
+153,"Dickson
+",Xenoblade,NULL,NULL
+154,"Lorithia
+",Xenoblade,NULL,NULL
+155,"Alvis/Ontos
+",Xenoblade,NULL,NULL
+156,"Cross
+",Xenoblade,NULL,NULL
+157,"Elma
+",Xenoblade,NULL,NULL
+158,"Lin Lee Koo
+",Xenoblade,NULL,NULL
+159,"Lao Huang
+",Xenoblade,NULL,NULL
+160,"Luxaar
+",Xenoblade,NULL,NULL
+161,"Rex
+",Xenoblade,NULL,NULL
+162,"Pyra/Mythra/Pneuma
+",Xenoblade,NULL,NULL
+163,"Nia
+",Xenoblade,NULL,NULL
+164,"Dromarch
+",Xenoblade,NULL,NULL
+165,"Tora
+",Xenoblade,NULL,NULL
+166,"Poppi
+",Xenoblade,NULL,NULL
+167,"Mòrag Ladair
+",Xenoblade,NULL,NULL
+168,"Brighid
+",Xenoblade,NULL,NULL
+169,"Zeke
+",Xenoblade,NULL,NULL
+170,"Pandoria
+",Xenoblade,NULL,NULL
+171,"Lora
+",Xenoblade,NULL,NULL
+172,"Jin
+",Xenoblade,NULL,NULL
+173,"Haze
+",Xenoblade,NULL,NULL
+174,"Addam Origo
+",Xenoblade,NULL,NULL
+175,"Minoth
+",Xenoblade,NULL,NULL
+176,"Hugo Ardanach
+",Xenoblade,NULL,NULL
+177,"Aegaeon
+",Xenoblade,NULL,NULL
+178,"Malos/Logos
+",Xenoblade,NULL,NULL
+179,"Amalthus
+",Xenoblade,NULL,NULL
+180,"Callie
+",Splatoon,NULL,NULL
+181,"Marie
+",Splatoon,NULL,NULL
+182,"Cap'n Cuttlefish
+",Splatoon,NULL,NULL
+183,"Judd the Cat
+",Splatoon,NULL,NULL
+184,"DJ Octavio
+",Splatoon,NULL,NULL
+185,"Pearl
+",Splatoon,NULL,NULL
+186,"Marina
+",Splatoon,NULL,NULL
+187,"Agent 3
+",Splatoon,NULL,NULL
+188,"Agent 4
+",Splatoon,NULL,NULL
+189,"Agent 8
+",Splatoon,NULL,NULL
+190,"Commander Tartar
+",Splatoon,NULL,NULL
+191,"Spring Man
+",ARMS,NULL,NULL
+192,"Ribbon Girl
+",ARMS,NULL,NULL
+193,"Ninjara
+",ARMS,NULL,NULL
+194,"Mechanica
+",ARMS,NULL,NULL
+195,"Master Mummy
+",ARMS,NULL,NULL
+196,"Min Min
+",ARMS,NULL,NULL
+197,"Helix
+",ARMS,NULL,NULL
+198,"Kid Cobra
+",ARMS,NULL,NULL
+199,"Byte & Barq
+",ARMS,NULL,NULL
+200,"Twintelle
+",ARMS,NULL,NULL
+201,"Max Brass
+",ARMS,NULL,NULL
+202,"Lola Pop
+",ARMS,NULL,NULL
+203,"Misango
+",ARMS,NULL,NULL
+204,"Hedlok
+",ARMS,NULL,NULL
+205,"Biff
+",ARMS,NULL,NULL
+206,"Chibi-Robo
+",Other,NULL,NULL
+207,"Dillon
+",Other,NULL,NULL
+208,"Duck Hunt Dog
+",Other,NULL,NULL
+209,"Mallo
+",Other,NULL,NULL
+210,"Mr. Game & Watch
+",Other,NULL,NULL
+211,"Qbby
+",Other,NULL,NULL
