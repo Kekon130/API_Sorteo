@@ -14,12 +14,8 @@ main().then(async () => {
     await prisma.$disconnect()
       process.exit(1)
 })
-async function allTikets(req , res){
-    const tickets = await prisma.ticket.findMany();
-    return res.json(tickets);
-}
+
 
 
 module.exports={
-    allTikets,
 }

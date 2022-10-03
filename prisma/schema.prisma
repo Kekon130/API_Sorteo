@@ -14,7 +14,7 @@ datasource db {
   telegram String @db.VarChar(20)
   name String @db.VarChar(30)
   password String @db.VarChar(40)
-  tickets Ticket[]
+  tickets Ticket[] 
   sales Sale[]
   reserves Reserve[]
   has Has[]
@@ -32,7 +32,7 @@ datasource db {
   id Int @id @default(autoincrement())
   name String @db.VarChar(30)
   game String @db.VarChar(50)
-  seller Seller @relation(fields: [sellerID], references: [id])
+  seller Seller @relation(fields: [sellerID], references: [id]) 
   sellerID Int //scalar field for the relation above
   client Client @relation(fields: [clientID], references: [id])
   clientID Int //scalar field for the relation above
