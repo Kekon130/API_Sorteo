@@ -1,60 +1,60 @@
 -- CreateTable
 CREATE TABLE `Seller` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `telegram` VARCHAR(20) NOT NULL,
-    `name` VARCHAR(30) NOT NULL,
-    `password` VARCHAR(40) NOT NULL,
+    `id` INTEGER AUTO_INCREMENT,
+    `telegram` VARCHAR(20),
+    `name` VARCHAR(30),
+    `password` VARCHAR(40),
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Client` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `telegram` VARCHAR(20) NOT NULL,
-    `name` VARCHAR(30) NOT NULL,
+    `id` INTEGER AUTO_INCREMENT,
+    `telegram` VARCHAR(20),
+    `name` VARCHAR(30),
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Ticket` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(30) NOT NULL,
-    `game` VARCHAR(50) NOT NULL,
-    `sellerID` INTEGER NOT NULL,
-    `clientID` INTEGER NOT NULL,
+    `id` INTEGER AUTO_INCREMENT,
+    `name` VARCHAR(30),
+    `game` VARCHAR(50),
+    `sellerID` INTEGER,
+    `clientID` INTEGER,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Reserve` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `sellerID` INTEGER NOT NULL,
-    `clientID` INTEGER NOT NULL,
-    `ticketID` INTEGER NOT NULL,
+    `id` INTEGER AUTO_INCREMENT,
+    `sellerID` INTEGER,
+    `clientID` INTEGER,
+    `ticketID` INTEGER,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Sale` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `sellerID` INTEGER NOT NULL,
-    `clientID` INTEGER NOT NULL,
-    `ticketID` INTEGER NOT NULL,
-    `date` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `id` INTEGER AUTO_INCREMENT,
+    `sellerID` INTEGER,
+    `clientID` INTEGER,
+    `ticketID` INTEGER,
+    `date` TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP(6),
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Has` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `ticketID` INTEGER NOT NULL,
-    `sellerID` INTEGER NOT NULL,
-    `date` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `id` INTEGER AUTO_INCREMENT,
+    `ticketID` INTEGER,
+    `sellerID` INTEGER,
+    `date` TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP(6),
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
