@@ -1,4 +1,5 @@
 const {PrismaClient} = require ('@prisma/client')
+const bcrypt = require('bcrypt')
 
 const prisma = new PrismaClient()
 
@@ -15,7 +16,16 @@ main().then(async () => {
       process.exit(1)
 })
 
-
+async function createUserByEmailAndPassword(req,res){
+    const user = await prisma.seller.create({
+        data:{
+            telegram: req.params.telegram,
+            password:  bcrypt.hashSync(req.params.password,12)
+        }
+    });
+    return res.send("200").json(user);
+}
 
 module.exports={
+    createUserByEmailAndPassword,
 }

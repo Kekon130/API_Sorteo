@@ -18,6 +18,8 @@ datasource db {
   sales Sale[]
   reserves Reserve[]
   has Has[]
+  refreshTokens RefreshToken[]
+
  }
  model Client{client Client
   id Int @id @default(autoincrement())
@@ -67,3 +69,12 @@ datasource db {
   sellerID Int //scalar field for the relation above
   date DateTime @default(now()) @db.Timestamp(6)
  }
+ model RefreshToken {
+  id          String   @id @unique @default(uuid())
+  hashedToken String
+  sellerId    Int
+  Seller      Seller    @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  revoked     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
