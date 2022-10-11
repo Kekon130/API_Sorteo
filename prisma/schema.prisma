@@ -9,61 +9,31 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
- model Seller{
-  id Int @id @default(autoincrement())
-  telegram String @db.VarChar(20)
-  name String @db.VarChar(30)
-  password String @db.VarChar(40)
-  tickets Ticket[]
-  sales Sale[]
-  reserves Reserve[]
-  has Has[]
- }
- model Client{client Client
-  id Int @id @default(autoincrement())
-  telegram String @db.VarChar(20)
-  name String @db.VarChar(30)
-  tickets Ticket[]
-  reserves Reserve[]
-  sales Sale[]
 
- }
- model Ticket{
-  id Int @id @default(autoincrement())
-  name String @db.VarChar(30)
-  game String @db.VarChar(50)
-  seller Seller @relation(fields: [sellerID], references: [id])
-  sellerID Int //scalar field for the relation above
-  client Client @relation(fields: [clientID], references: [id])
-  clientID Int //scalar field for the relation above
-  sales Sale[]
-  reserves Reserve[]
-  has Has[]
- }
- model Reserve{
-  id Int @id @default(autoincrement())
-  seller Seller @relation(fields: [sellerID], references: [id])
-  sellerID Int //scalar field for the relation above
-  client Client @relation(fields: [clientID],references: [id]) 
-  clientID Int //scalar field for the relation above
-  ticket Ticket @relation(fields: [ticketID],references: [id])
-  ticketID Int //scalar field for the relation above
- }
- model Sale{
-  id Int @id @default(autoincrement())
-  seller Seller @relation(fields: [sellerID], references: [id])
-  sellerID Int //scalar field for the relation above
-  client Client @relation(fields: [clientID],references: [id]) 
-  clientID Int //scalar field for the relation above
-  ticket Ticket @relation(fields: [ticketID],references: [id])
-  ticketID Int //scalar field for the relation above
-  date DateTime @default(now()) @db.Timestamp(6)
- } 
- model Has{
-  id Int @id @default(autoincrement())
-  ticket Ticket @relation(fields: [ticketID],references: [id])
-  ticketID Int //scalar field for the relation above
-  seller Seller @relation(fields: [sellerID],references: [id])
-  sellerID Int //scalar field for the relation above
-  date DateTime @default(now()) @db.Timestamp(6)
- }
+model Seller {
+  id       Int      @id @default(autoincrement())
+  telegram String   @db.VarChar(20)
+  name     String   @db.VarChar(30)
+  password String   @db.VarChar(40)
+  tickets  Ticket[]
+}
+
+model Client {
+  id               Int      @id @default(autoincrement())
+  telegram         String   @db.VarChar(20)
+  name             String   @db.VarChar(30)
+  buyed_Tickets    Ticket[] @relation("Buy")
+  reserved_Tickets Ticket[] @relation("Reservation")
+}
+
+model Ticket {
+  id            Int    @id @default(autoincrement())
+  name          String @db.VarChar(30)
+  game          String @db.VarChar(50)
+  seller        Seller @relation(fields: [sellerID], references: [id])
+  sellerID      Int //scalar field for the relation above
+  client        Client @relation(name: "Buy", fields: [clientID], references: [id])
+  clientID      Int //scalar field for the relation above
+  reservation   Client @relation(name: "Reservation", fields: [reservationID], references: [id])
+  reservationID Int //scalar field for the relation above
+}
