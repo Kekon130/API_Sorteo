@@ -23,9 +23,18 @@ async function createUserByEmailAndPassword(req,res){
             password:  bcrypt.hashSync(req.params.password,12)
         }
     });
-    return res.send("200").json(user);
+    return res.status("200").send(user);
 }
-
+async function login(req,res){
+    const user = await prisma.seller.findUnique({
+        where: {
+            id: req.params.telegram
+        }}
+    )
+    if(user.password == req.params.password){
+        res.status(200)
+    }else{res.status(401).send({message: 'La contraseña no es correcta'})}
+}
 module.exports={
     createUserByEmailAndPassword,
 }

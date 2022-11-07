@@ -8,7 +8,7 @@ async function findByGame(req,res){
         where:{ game: req.params.game},
         include:{ client: true, has:true}
     }, )
-    return res.send(tickets);
+    return res.status(200).send(tickets);
 }
 
 //Search a ticket by the number it have
@@ -18,7 +18,7 @@ async function findByNumber(req,res){
         where: {id:busqueda},
         include: {client:true, has:true},
     });
-    return res.json(ticket);
+    return res.status(200).send(ticket);
 }
 
 //Find a ticket by the name of the character
@@ -27,12 +27,12 @@ async function findByName(req,res){
         where:{name: req.params.name},
         include:{client:true, has:true},
     });
-    return res.json(ticket);
+    return res.send(ticket);
 }
 //Find all tickets
 async function allTikets(req , res){
     const tickets = await prisma.ticket.findMany();
-    return res.json(tickets);
+    return res.status(200).send(tickets);
 }
 
 module.exports={

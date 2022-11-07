@@ -8,7 +8,7 @@ async function ticketsOwned(req,res){
         where:{telegram:req.params.telegram},
         include:{tickets:true},
     });
-    return res.json(tickets);
+    return res.status(200).send(tickets);
 }
 
 //Search ticket that the client has reserved
@@ -17,7 +17,7 @@ async function ticketReserved(req,res){
         where:{telegram:req.params.telegram},
         include:{reserves:true},
     });
-    return res.json(tickets);
+    return res.status(200).send(tickets);
 }
 
 module.exports ={
