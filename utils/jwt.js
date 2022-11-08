@@ -6,25 +6,16 @@ function generateAccessToken(seller){
     });
 }
 
-
-function generateRefreshToken(user, jti){
-    return jwt.sign({
-        userId: user.id,
-        jti
-    }, process.env.JWT_REFRESH_SECRET, {
-        expiresIn: '8h',
-    });
+function checkToken(token){
+    try{
+        return jwt.verify(token,process.env.JWT_ACCESS_SECRET);
+    }catch(error){
+        return undefined;
+    }
 }
 
-function generateTokens(seller, jti){
-    const accessToken = generateAccessToken(seller);
-    const refreshToken = generateRefreshToken(seller,jti);
-
-    return{ accessToken, refreshToken,};
-}
 
 module.exports = {
     generateAccessToken,
-    generateRefreshToken,
-    generateTokens
+    checkToken,
 };

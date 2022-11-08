@@ -2,6 +2,19 @@ const {PrismaClient} = require ('@prisma/client')
 
 const prisma = new PrismaClient();
 
+async function main(){
+    console.log('App iniciada');
+}
+
+main().then(async () => {
+    await prisma.$disconnect()
+}).catch(async (e) => {
+    console.error(e)
+    await prisma.$disconnect()
+      process.exit(1)
+})
+
+
 //Search the tickets that is include in a game series 
 async function findByGame(req,res){
     const tickets = await prisma.ticket.findMany({
@@ -30,11 +43,14 @@ async function findByName(req,res){
     return res.send(ticket);
 }
 //Find all tickets
-async function allTikets(req , res){
+async function allTikets(req, res){
     const tickets = await prisma.ticket.findMany();
     return res.status(200).send(tickets);
 }
 
+async function ticketSelled(id){
+    
+}
 module.exports={
     findByGame, findByNumber,findByName,allTikets
 }
