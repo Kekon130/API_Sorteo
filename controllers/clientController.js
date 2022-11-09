@@ -20,6 +20,7 @@ async function ticketReserved(req,res){
     return res.status(200).send(tickets);
 }
 
+
 module.exports ={
     ticketReserved,ticketsOwned,
 }

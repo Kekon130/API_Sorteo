@@ -75,6 +75,19 @@ async function findByNameAuth(req,res){
     });
     return res.send(ticket);
 }
+
+async function sellTicket(req,res){
+    prisma.ticket.update({
+        where:{
+            id: req.params.ticketID
+        },
+        data:{
+            sellerID: req.params.sellerID,
+            clientID: req.params.clientID,
+        }
+    })
+}
+
 module.exports={
-    findByGame, findByNumber,findByName,allTikets,findByGameAuth, findByNumberAuth,findByNameAuth
+    findByGame, findByNumber,findByName,allTikets,findByGameAuth, findByNumberAuth,findByNameAuth,sellTicket
 }
