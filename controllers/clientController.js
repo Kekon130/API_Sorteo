@@ -1,5 +1,5 @@
 const {PrismaClient} = require('@prisma/client');
-const { createToken }=require('')
+const { generateAccessToken }=require('../utils/jwt')
 const prisma = new PrismaClient();
 
 //Search tickets by the telegram name 

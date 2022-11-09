@@ -9,7 +9,6 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
 model Seller {
   id       Int      @id @default(autoincrement())
   telegram String   @db.VarChar(20)

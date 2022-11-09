@@ -36,7 +36,7 @@ async function findByNumber(req,res){
 
 //Find a ticket by the name of the character
 async function findByName(req,res){
-    const ticket = prisma.ticket.find({
+    const ticket = prisma.ticket.findUnique({
         where:{name: req.params.name},
         include:{has:true},
     });
