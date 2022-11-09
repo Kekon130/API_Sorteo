@@ -19,7 +19,7 @@ main().then(async () => {
 async function findByGame(req,res){
     const tickets = await prisma.ticket.findMany({
         where:{ game: req.params.game},
-        include:{ client: true, has:true}
+        include:{ has:true}
     }, )
     return res.status(200).send(tickets);
 }
@@ -29,7 +29,7 @@ async function findByNumber(req,res){
     const busqueda = req.params.id + 1;
     const ticket = await prisma.client.findUnique({
         where: {id:busqueda},
-        include: {client:true, has:true},
+        include: {has:true},
     });
     return res.status(200).send(ticket);
 }
@@ -38,19 +38,43 @@ async function findByNumber(req,res){
 async function findByName(req,res){
     const ticket = prisma.ticket.find({
         where:{name: req.params.name},
-        include:{client:true, has:true},
+        include:{has:true},
     });
     return res.send(ticket);
 }
 //Find all tickets
 async function allTikets(req, res){
-    const tickets = await prisma.ticket.findMany();
+    const tickets = await prisma.ticket.findMany({include:{has:true}});
     return res.status(200).send(tickets);
 }
 
-async function ticketSelled(id){
-    
+//Search the tickets that is include in a game series with credentials
+async function findByGameAuth(req,res){
+    const tickets = await prisma.ticket.findMany({
+        where:{ game: req.params.game},
+        include:{ has:true, client:true}
+    }, )
+    return res.status(200).send(tickets);
+}
+
+//Search a ticket by the number it have with credentials
+async function findByNumberAuth(req,res){
+    const busqueda = req.params.id + 1;
+    const ticket = await prisma.client.findUnique({
+        where: {id:busqueda},
+        include: {has:true, client:true},
+    });
+    return res.status(200).send(ticket);
+}
+
+//Find a ticket by the name of the character with credentials
+async function findByNameAuth(req,res){
+    const ticket = prisma.ticket.find({
+        where:{name: req.params.name},
+        include:{ has:true, client:true},
+    });
+    return res.send(ticket);
 }
 module.exports={
-    findByGame, findByNumber,findByName,allTikets
+    findByGame, findByNumber,findByName,allTikets,findByGameAuth, findByNumberAuth,findByNameAuth
 }
