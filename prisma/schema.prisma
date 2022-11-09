@@ -16,7 +16,6 @@ model Seller {
   name     String   @db.VarChar(30)
   password String   @db.VarChar(40)
   saltPass String   @db.VarChar(40)
-  logged   Boolean  @default(false)
   tickets  Ticket[]
 }
 
