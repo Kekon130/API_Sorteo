@@ -50,44 +50,59 @@ async function allTikets(req, res){
 
 //Search the tickets that is include in a game series with credentials
 async function findByGameAuth(req,res){
-    const tickets = await prisma.ticket.findMany({
-        where:{ game: req.params.game},
-        include:{ has:true, client:true}
-    }, )
-    return res.status(200).send(tickets);
+   try{ 
+        const tickets = await prisma.ticket.findMany({
+            where:{ game: req.params.game},
+            include:{ has:true, client:true}
+        }, )
+        return res.status(200).send(tickets);
+    }catch(error){
+        return res.status(404),send('No se ha encontrado el boleto ');
+    }
 }
+
 
 //Search a ticket by the number it have with credentials
 async function findByNumberAuth(req,res){
-    const busqueda = req.params.id + 1;
-    const ticket = await prisma.client.findUnique({
-        where: {id:busqueda},
-        include: {has:true, client:true},
-    });
-    return res.status(200).send(ticket);
+    try{
+        const busqueda = req.params.id + 1;
+        const ticket = await prisma.client.findUnique({
+            where: {id:busqueda},
+            include: {has:true, client:true},
+        });
+        return res.status(200).send(ticket);
+    }catch(error){
+        return res.status(404),send('No se ha encontrado el boleto');
+    }
 }
 
 //Find a ticket by the name of the character with credentials
 async function findByNameAuth(req,res){
-    const ticket = prisma.ticket.find({
+    try{
+        const ticket = prisma.ticket.find({
         where:{name: req.params.name},
         include:{ has:true, client:true},
-    });
-    return res.send(ticket);
+        });
+        return res.status(200).send(ticket);
+    }catch(error){
+        return res.status(404),send('No se ha encontrado el boleto');
+    }
 }
 
 async function sellTicket(req,res){
-    prisma.ticket.update({
-        where:{
-            id: req.params.ticketID
-        },
-        data:{
-            sellerID: req.params.sellerID,
-            clientID: req.params.clientID,
-        }
-    })
+   try {
+        prisma.ticket.update({
+            where:{id:req.params.ticketID},
+            data:{
+                sellerID : req.body.sellerID,
+                clientID: req.body.clientID,
+            }
+        });
+        return res.status(200) 
+   } catch (error) {
+        return res.status(404).send('No se ha encontrado el boleto')
+   }
 }
-
 module.exports={
     findByGame, findByNumber,findByName,allTikets,findByGameAuth, findByNumberAuth,findByNameAuth,sellTicket
 }

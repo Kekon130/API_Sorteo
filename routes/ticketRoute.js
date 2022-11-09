@@ -14,8 +14,9 @@ router.get('/getTicketByNumber/:id',controller.findByNumber);
 router.get('/getTicketByGameAuth/:game',middleware.loggin,controller.findByGame);
 router.get('/getTicketByNameAuth/:name',middleware.loggin,controller.findByName);
 router.get('/getTicketByNumberAuth/:id',middleware.loggin,controller.findByNumber);
-router.post('/sellTicket/',middleware.loggin,controller.sellTicket);
 
-router.get('./',controller.allTikets);
+router.patch('/sellTicket/:ticketID',middleware.loggin,controller.sellTicket);
+
+router.get('/',controller.allTikets);
 
 module.exports=router;
