@@ -2,50 +2,52 @@ const {PrismaClient} = require ('@prisma/client')
 
 const prisma = new PrismaClient();
 
-async function main(){
-    console.log('App iniciada');
-}
-
-main().then(async () => {
-    await prisma.$disconnect()
-}).catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-      process.exit(1)
-})
-
 
 //Search the tickets that is include in a game series 
 async function findByGame(req,res){
-    const tickets = await prisma.ticket.findMany({
-        where:{ game: req.params.game},
-        include:{ has:true}
-    }, )
-    return res.status(200).send(tickets);
+    try{
+        const tickets = await prisma.ticket.findMany({
+            where:{ game: req.params.game}
+        })
+        return res.status(200).json(tickets);
+    }catch(error){
+        return res.status(404).send('Boleto no encontrado')
+    }
 }
 
 //Search a ticket by the number it have
 async function findByNumber(req,res){
-    const busqueda = req.params.id + 1;
-    const ticket = await prisma.client.findUnique({
-        where: {id:busqueda},
-        include: {has:true},
-    });
-    return res.status(200).send(ticket);
+    try{
+        const busqueda = req.params.id + 1;
+        res.send(busqueda);
+        const ticket = await prisma.client.findUnique({
+            where: {id:busqueda}
+        });
+        return res.status(200).send(ticket);
+    }catch(error){
+        res.status(404).send('No se ha encontrado el boleto')
+    }
 }
 
 //Find a ticket by the name of the character
 async function findByName(req,res){
-    const ticket = prisma.ticket.findUnique({
-        where:{name: req.params.name},
-        include:{has:true},
-    });
-    return res.send(ticket);
+    try{
+        const ticket = prisma.ticket.findUnique({
+            where:{name: req.params.name}
+        });
+        return res.json(ticket);
+    }catch(error){
+        return res.status(404).send('No se ha encontrado ningun boleto')
+    }
 }
 //Find all tickets
-async function allTikets(req, res){
-    const tickets = await prisma.ticket.findMany({include:{has:true}});
-    return res.status(200).send(tickets);
+async function allTickets(req,res){
+    try{
+        const tickets = await prisma.ticket.findMany();
+        return res.status(200).json(tickets)
+    }catch(error){
+        res.status(404).send('No se encuentran boletos')
+    }
 }
 
 //Search the tickets that is include in a game series with credentials
@@ -53,8 +55,7 @@ async function findByGameAuth(req,res){
    try{ 
         const tickets = await prisma.ticket.findMany({
             where:{ game: req.params.game},
-            include:{ has:true, client:true}
-        }, )
+        },)
         return res.status(200).send(tickets);
     }catch(error){
         return res.status(404),send('No se ha encontrado el boleto ');
@@ -68,7 +69,7 @@ async function findByNumberAuth(req,res){
         const busqueda = req.params.id + 1;
         const ticket = await prisma.client.findUnique({
             where: {id:busqueda},
-            include: {has:true, client:true},
+            include: {client:true},
         });
         return res.status(200).send(ticket);
     }catch(error){
@@ -81,7 +82,7 @@ async function findByNameAuth(req,res){
     try{
         const ticket = prisma.ticket.find({
         where:{name: req.params.name},
-        include:{ has:true, client:true},
+        include:{client:true},
         });
         return res.status(200).send(ticket);
     }catch(error){
@@ -103,6 +104,8 @@ async function sellTicket(req,res){
         return res.status(404).send('No se ha encontrado el boleto')
    }
 }
+
+
 module.exports={
-    findByGame, findByNumber,findByName,allTikets,findByGameAuth, findByNumberAuth,findByNameAuth,sellTicket
+   findByGame, findByNumber,findByName,allTickets,findByGameAuth, findByNumberAuth,findByNameAuth,sellTicket
 }

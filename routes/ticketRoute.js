@@ -9,6 +9,7 @@ const router = Router();
 router.get('/getTicketByGame/:game',controller.findByGame);
 router.get('/getTicketByName/:name',controller.findByName);
 router.get('/getTicketByNumber/:id',controller.findByNumber);
+router.get('/allTicket',controller.allTickets);
 
 //Estas rutas son para los vendedores y ver que cliente tiene asociado
 router.get('/getTicketByGameAuth/:game',middleware.loggin,controller.findByGameAuth);
@@ -17,6 +18,10 @@ router.get('/getTicketByNumberAuth/:id',middleware.loggin,controller.findByNumbe
 
 router.patch('/sellTicket/:ticketID',middleware.loggin,controller.sellTicket);
 
-router.get('/',controller.allTikets);
+
+
+router.get('/',(req,res)=>{
+    return res.status(200).send('Gestion de tickets')
+});
 
 module.exports=router;

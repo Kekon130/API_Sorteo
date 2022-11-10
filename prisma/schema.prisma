@@ -32,7 +32,7 @@ model Ticket {
   game          String @db.VarChar(50)
   urlImage      String @db.VarChar(80)
   seller        Seller @relation(fields: [sellerID], references: [id])
-  sellerID      Int //scalar field for the relation above
+  sellerID      Int//scalar field for the relation above
   client        Client @relation(name: "Buy", fields: [clientID], references: [id])
   clientID      Int //scalar field for the relation above
   reservation   Client @relation(name: "Reservation", fields: [reservationID], references: [id])
