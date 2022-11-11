@@ -9,7 +9,7 @@ const router = Router();
 router.get('/',(req,res)=>{
     res.send('Gestion de tickets'); 
 })
-router.post('/register/:telegram',middleware.loggin,controller.createUserByEmailAndPassword);
+router.post('/register',middleware.loggin,controller.createUserByEmailAndPassword);
 
 router.get('/login',controller.login);
 

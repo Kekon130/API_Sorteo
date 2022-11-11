@@ -15,7 +15,7 @@ model Seller {
   name     String   @db.VarChar(30)
   password String   @db.VarChar(40)
   saltPass String   @db.VarChar(40)
-  tickets  Ticket[]
+  tickets  Ticket[] @relation("ClientBuy")
 }
 
 model Client {
@@ -31,7 +31,7 @@ model Ticket {
   name          String @db.VarChar(30)
   game          String @db.VarChar(50)
   urlImage      String @db.VarChar(80)
-  seller        Seller @relation(fields: [sellerID], references: [id])
+  seller        Seller @relation(name:"ClientBuy",fields: [sellerID], references: [id])
   sellerID      Int//scalar field for the relation above
   client        Client @relation(name: "Buy", fields: [clientID], references: [id])
   clientID      Int //scalar field for the relation above
