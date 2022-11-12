@@ -6,7 +6,7 @@ async function ticketsOwned(req,res){
     try{
         const tickets = await prisma.client.findFirst({
             where:{telegram:req.params.telegram},
-            include:{reserved_Tickets:true},
+            include:{buyed_Tickets:true},
         });
         return res.status(200).json(tickets);
     }catch(error){
