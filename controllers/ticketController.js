@@ -1,5 +1,4 @@
 const {PrismaClient} = require ('@prisma/client')
-
 const prisma = new PrismaClient();
 
 
@@ -21,6 +20,7 @@ async function findByGame(req,res){
 async function findByNumber(req,res){
     try{
         const busqueda = parseInt(req.params.id) + 1;
+        console.log(busqueda)
         const ticket = await prisma.ticket.findUnique({
             where: {id:busqueda}
         });
@@ -33,11 +33,11 @@ async function findByNumber(req,res){
 //Find a ticket by the name of the character
 async function findByName(req,res){
     try{
-        console.log(req.params.name)
-        const ticket = prisma.ticket.findFirst({
+        const ticket = await prisma.ticket.findFirst({
             where:{name:req.params.name}
         });
-        return res.json(ticket);
+        if(ticket ===null){ return res.status(404).send('No se ha encontrado ningun boleto')}
+        return res.status(200).json(ticket);
     }catch(error){
         return res.status(404).send('No se ha encontrado ningun boleto')
     }
@@ -51,6 +51,7 @@ async function allTickets(req,res){
         res.status(404).send('No se encuentran boletos')
     }
 }
+
 
 //Search the tickets that is include in a game series with credentials
 async function findByGameAuth(req,res){
@@ -69,7 +70,7 @@ async function findByGameAuth(req,res){
 async function findByNumberAuth(req,res){
     try{
         const busqueda = parseInt(req.params.id) + 1;
-        const ticket = await prisma.client.findUnique({
+        const ticket = await prisma.ticket.findUnique({
             where: {id:busqueda},
             include: {client:true},
         });
@@ -91,18 +92,44 @@ async function findByNameAuth(req,res){
         return res.status(404),send('No se ha encontrado el boleto');
     }
 }
+async function reserveTicket(req,res){
+    try {
+        const busqueda =parseInt(req.params.id) + 1;
+        const reserva = await prisma.ticket.findUnique({where:{id:busqueda}})
+        if(reserva.reservationID!=0){return res.status(400).send('No se puede reservar un boleto reservado')}
+        else{
+            const user = await prisma.user.findFirst({where:{telegram:req.body.telegram}})
+            const update=await prisma.ticket.update({
+                    where:{id: busqueda},
+                    data:{
+                        reservationID: user.id,
+                    }
+                });
+                return res.status(200).json(update);
+        }
+       } catch (error) {
+            return res.status(404).send('No se ha encontrado el boleto')
+       }
+       
+}
 
 async function sellTicket(req,res){
    try {
-    const busqueda = parseInt(req.params.id) + 1;
-    const update=await prisma.ticket.update({
-            where:{id: busqueda},
-            data:{
-                sellerID : req.body.sellerID,
-                clientID: req.body.clientID,
-            }
-        });
-        return res.status(200).json(update);
+    const busqueda = parseInt(req.body.id) + 1;
+    const reserva = await prisma.ticket.findUnique({where:{id:busqueda}})
+    if(reserva.reservationID!=0){return res.status(400).send('No se puede comprar un boleto reservado')}
+    else{
+        const user = await prisma.user.findFirst({where:{telegram:req.body.telegram}})
+        const update=await prisma.ticket.update({
+                where:{id: busqueda},
+                data:{
+                    sellerID : req.body.sellerID,
+                    clientID: user.id,
+                    reservationID: 0,
+                }
+            });
+            return res.status(200).json(update);
+    }
    } catch (error) {
         return res.status(404).send('No se ha encontrado el boleto')
    }
@@ -110,5 +137,5 @@ async function sellTicket(req,res){
 
 
 module.exports={
-   findByGame, findByNumber,findByName,allTickets,findByGameAuth, findByNumberAuth,findByNameAuth,sellTicket
+   findByGame, findByNumber,findByName,allTickets,findByGameAuth, findByNumberAuth,findByNameAuth,sellTicket,reserveTicket
 }

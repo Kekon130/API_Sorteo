@@ -16,8 +16,9 @@ router.get('/getTicketByGameAuth/:game',middleware.loggin,controller.findByGameA
 router.get('/getTicketByNameAuth/:name',middleware.loggin,controller.findByNameAuth);
 router.get('/getTicketByNumberAuth/:id',middleware.loggin,controller.findByNumberAuth);
 
-router.patch('/sellTicket/:ticketID',middleware.loggin,controller.sellTicket);
 
+router.patch('/sellTicket/',middleware.loggin,controller.sellTicket);
+router.patch('/reserveTicket/:id',middleware.loggin,controller.reserveTicket)
 
 
 router.get('/',(req,res)=>{
