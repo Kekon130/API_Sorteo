@@ -92,9 +92,11 @@ async function findByNameAuth(req,res){
         return res.status(404),send('No se ha encontrado el boleto');
     }
 }
+
+
 async function reserveTicket(req,res){
     try {
-        const busqueda =parseInt(req.params.id) + 1;
+        const busqueda =parseInt(req.body.id) + 1;
         const reserva = await prisma.ticket.findUnique({where:{id:busqueda}})
         if(reserva.reservationID!=0){return res.status(400).send('No se puede reservar un boleto reservado')}
         else{
@@ -113,6 +115,25 @@ async function reserveTicket(req,res){
        
 }
 
+async function removeReserve(req,res){
+    try{
+        const busqueda =parseInt(req.params.id) + 1;
+        const reserva = await prisma.ticket.findUnique({where:{id:busqueda}})
+        if(reserva.reservationID==0){return res.status(400).send('Este boleto no esta reservado')}
+        else{
+            const update=await prisma.ticket.update({
+                where:{id: busqueda},
+                data:{
+                    reservationID: 0,
+                }
+            });
+            return res.status(200).json(update);
+        }
+    }catch(error){
+        return res.status(404).send('No se ha encontrado el boleto')
+    }
+}
+
 async function sellTicket(req,res){
    try {
     const busqueda = parseInt(req.body.id) + 1;
@@ -120,10 +141,11 @@ async function sellTicket(req,res){
     if(reserva.reservationID!=0){return res.status(400).send('No se puede comprar un boleto reservado')}
     else{
         const user = await prisma.user.findFirst({where:{telegram:req.body.telegram}})
+        const seller = await prisma.seller.findFirst({where:{telegram:req.body.telegram}})
         const update=await prisma.ticket.update({
                 where:{id: busqueda},
                 data:{
-                    sellerID : req.body.sellerID,
+                    sellerID : seller.id,
                     clientID: user.id,
                     reservationID: 0,
                 }
@@ -137,5 +159,5 @@ async function sellTicket(req,res){
 
 
 module.exports={
-   findByGame, findByNumber,findByName,allTickets,findByGameAuth, findByNumberAuth,findByNameAuth,sellTicket,reserveTicket
+   findByGame, findByNumber,findByName,allTickets,findByGameAuth, findByNumberAuth,findByNameAuth,sellTicket,reserveTicket,removeReserve
 }

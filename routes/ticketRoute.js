@@ -19,6 +19,7 @@ router.get('/getTicketByNumberAuth/:id',middleware.loggin,controller.findByNumbe
 
 router.patch('/sellTicket/',middleware.loggin,controller.sellTicket);
 router.patch('/reserveTicket/:id',middleware.loggin,controller.reserveTicket)
+router.patch('/removeReserve',middleware.loggin,controller.removeReserve)
 
 
 router.get('/',(req,res)=>{

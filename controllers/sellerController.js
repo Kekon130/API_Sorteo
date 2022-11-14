@@ -25,9 +25,9 @@ async function createUserByEmailAndPassword(req,res){
 
 //Hacemos el login con el @ de telegram y una contraseña la cual para compararla la ciframos igual que esta la otra
 async function login(req,res){
-    const seller = await prisma.seller.findUnique({
+    const seller = await prisma.seller.findFirst({
         where: {
-            id: req.params.telegram
+            telegram: req.params.telegram
         }}
     )
     if(seller.password == pbkdf2Sync(req.params.password, saltPass, 100000, 64, 'sha512').toString('hex')){
